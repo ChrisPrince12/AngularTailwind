@@ -1,0 +1,49 @@
+<!-- Navbar -->
+<div class="h-screen flex">
+    <div [ngClass]="{'w-full sm:w-5/12 lg:w-2/12': isSidebarVisible, 'hidden': !isSidebarVisible && isSmallScreen}" class="bg-gray-800  text-white transition-all duration-300">
+    
+    <div class="flex items-center border-b-2 p-4 border-yellowish/30">
+        <h1 class="text-2xl font-bold mb-4 text-yellowish">Dashboard</h1>
+     </div>
+     <div class="">
+        <ul class="divide-y divide-slate-100/50">
+             <div class="flex p-4 font-medium" (click)="redirect('home')" [class.active]="selectedComponent === 'home'">
+                <span class="px-3"><i class="fas fa-home"></i></span>Home
+             </div>
+             <div class="flex p-4 font-medium" (click)="redirect('profile')" [class.active]="selectedComponent === 'profile'">
+                <span class="px-3"><i class="fas fa-user"></i></span>Profile
+             </div>
+       </ul>
+     </div>
+   
+    </div>
+    <!-- Main Content -->
+    <div class="w-full lg:w-10/12 transition-all duration-300" [ngClass]="{ 'lg:w-full': !isSidebarVisible }">
+      <!-- Main Navbar -->
+      <div class="flex items-center px-2 h-16 justify-between mb-4 bg-greens-primary text-yellowish">
+        <button (click)="toggleSidebar()" class="px-4 py-2 rounded-lg">
+             <i class="fas fa-bars"></i>
+        </button>
+        <div class="flex relative items-center mr-4">
+          <div class="mr-4">Christopher</div>
+          <i class="fas fa-user" (click)="toggleOptions()"></i>
+
+          <ul *ngIf="showProfile" class="bg-white space-y-4 cursor-pointer absolute top-8 shadow-md py-4 px-6  text-greens-primary ">
+            <div class="flex hover:text-greens-secondary">
+                <span class="px-2"><i class="fas fa-file-pdf"></i></span> Stay
+            </div>
+            <div class="flex hover:text-greens-secondary" (click)="logout()">
+                <span class="px-2"><i class="fas fa-home"></i></span> Logout
+            </div>
+          </ul>
+
+        </div>
+   
+      </div>
+      <!-- Main Content Area -->
+      <div class="bg-white" #mainContent>
+        <!-- <ng-container name="main"></ng-container> -->
+      </div>
+    </div>
+  </div>
+  
